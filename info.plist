@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.weborate.alfred.tower</string>
+	<key>connections</key>
+	<dict>
+		<key>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Nicholas Penree</string>
+	<key>description</key>
+	<string>Quickly access your Tower 2 git repositories from Alfred 2</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Tower Repositories</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>tower</string>
+				<key>runningsubtext</key>
+				<string>Searching Repositories...</string>
+				<key>script</key>
+				<string>/usr/local/bin/node index.js "{query}"</string>
+				<key>title</key>
+				<string>Search for Tower Repositories...</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>TOWER_PATH="/Applications/Tower.app"
+
+if ! [ -d $TOWER_PATH ]; then
+    TOWER_PATH=`find /Applications -type d -maxdepth 3 -name Tower.app`
+fi
+
+GITTOWER_PATH="$TOWER_PATH/Contents/MacOS/gittower"
+
+# $1 is set by the "Run Script" action
+args="{query}"
+
+eval $GITTOWER_PATH $args</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/drudge/tower-alfred-workflow</string>
+</dict>
+</plist>
