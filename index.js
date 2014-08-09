@@ -27,7 +27,7 @@ var parseBookmarksSync = exports.parseBookmarksSync = function(f) {
     if (entry.fileURL && entry.fileReferenceURL) {
       var folder = parent.name ? format('%s/', parent.name) : '';
       var name = format('%s%s', folder, entry.name);
-      var path = entry.fileURL.substr(7);
+      var path = decodeURIComponent(entry.fileURL.substr(7));
 
       bookmarks.push({
         name: name, 
