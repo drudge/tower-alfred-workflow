@@ -1,12 +1,13 @@
 /*!
  * tower-alfred-workflow
- * Copyright(c) 2014 Nicholas Penree <nick@penree.com>
+ * Copyright(c) 2015 Nicholas Penree <nick@penree.com>
  * MIT Licensed
  */
 
 var alfredo = require('alfredo');
 var join = require('path').join;
 var format = require('util').format;
+var exists = require('fs').existsSync;
 
 var BOOKMARKS_FILE = join(
   process.env.HOME,
@@ -14,6 +15,14 @@ var BOOKMARKS_FILE = join(
   'Application Support',
   'com.fournova.Tower2',
   'bookmarks.plist'
+);
+
+var BOOKMARKS_FILE_V2 = join(
+  process.env.HOME,
+  'Library',
+  'Application Support',
+  'com.fournova.Tower2',
+  'bookmarks-v2.plist'
 );
 
 var parseBookmarksSync = exports.parseBookmarksSync = function(f) {
@@ -29,12 +38,12 @@ var parseBookmarksSync = exports.parseBookmarksSync = function(f) {
       var name = format('%s%s', folder, entry.name);
       var path = decodeURIComponent(entry.fileURL.substr(7));
 
-      bookmarks.push({
-        name: name, 
-        path: path, 
+      if (entry.valid) bookmarks.push({
+        name: name,
+        path: path,
         sortOrder: sortOrder
       });
-      
+
       sortOrder++;
     }
 
@@ -51,9 +60,10 @@ var parseBookmarksSync = exports.parseBookmarksSync = function(f) {
 };
 
 var getResults = exports.getResults = function(arg) {
-  var bookmarks = parseBookmarksSync(BOOKMARKS_FILE) || [];
+  var file = exists(BOOKMARKS_FILE_V2) ? BOOKMARKS_FILE_V2 : BOOKMARKS_FILE;
+  var bookmarks = parseBookmarksSync(file) || [];
   var results = [];
-  
+
   if (!arg) {
     results = bookmarks.sort(function(a, b) {
       return a.sortOrder - b.sortOrder;
@@ -67,7 +77,7 @@ var getResults = exports.getResults = function(arg) {
       }).pop();
     });
   }
-  
+
   return results || [];
 };
 
@@ -77,7 +87,7 @@ var getItems = exports.getItems = function(arg) {
       title: bookmark.name,
       subtitle: bookmark.path,
       arg: bookmark.path,
-      icon: 'CloneRepoIcon.png' 
+      icon: 'CloneRepoIcon.png'
     });
   });
 };
