@@ -10,11 +10,43 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>2E236D4A-EF05-45DD-AF0C-200A9600D211</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Reveal in Finder</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7CC682B7-1204-48CB-9657-D03E454FEABA</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Open in Terminal</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>796E13B7-90B5-458D-B0C8-57F53D2F8F42</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>736D7DC2-DCD6-4716-90CA-9BEE4E8BE8DB</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Browse in Alfred</string>
 			</dict>
 		</array>
 	</dict>
@@ -29,35 +61,18 @@
 	<key>objects</key>
 	<array>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>tower</string>
-				<key>runningsubtext</key>
-				<string>Searching Repositories...</string>
-				<key>script</key>
-				<string>/usr/local/bin/node index.js "{query}"</string>
-				<key>title</key>
-				<string>Search for Tower Repositories...</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.revealfile</string>
 			<key>uid</key>
-			<string>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</string>
+			<string>2E236D4A-EF05-45DD-AF0C-200A9600D211</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
@@ -83,20 +98,115 @@ eval $GITTOWER_PATH $args</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>tower</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching Repositories...</string>
+				<key>script</key>
+				<string>/usr/local/bin/node index.js "{query}"</string>
+				<key>title</key>
+				<string>Search for Tower Repositories...</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>cd {query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>7CC682B7-1204-48CB-9657-D03E454FEABA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>796E13B7-90B5-458D-B0C8-57F53D2F8F42</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>736D7DC2-DCD6-4716-90CA-9BEE4E8BE8DB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</key>
+		<key>2E236D4A-EF05-45DD-AF0C-200A9600D211</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>681DDC3C-04BA-4C1E-8DA6-393C3B489FF0</key>
+		<dict>
+			<key>ypos</key>
+			<real>20</real>
+		</dict>
+		<key>736D7DC2-DCD6-4716-90CA-9BEE4E8BE8DB</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
+		</dict>
+		<key>796E13B7-90B5-458D-B0C8-57F53D2F8F42</key>
+		<dict>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>7CC682B7-1204-48CB-9657-D03E454FEABA</key>
+		<dict>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
 		<key>F88B79B9-B22A-4A08-8A36-53DD874AFDB3</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>40</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
